@@ -1,0 +1,49 @@
+                        ::ffff:10.0.0.10:  S002962 T00013738259317 F0/L6 ------------[ cut here ]------------
+                        ::ffff:10.0.0.10:  S002963 T00013738259344 F0/L4 WARNING: CPU: 2 PID: 1866190 at mm/slub.c:4753 free_large_kmalloc+0xa5/0xc0
+                        ::ffff:10.0.0.10:  S002964 T00013738259355 F0/L6 CPU: 2 UID: 1000 PID: 1866190 Comm: python3 Not tainted 6.16.0-rc2-nolto-00024-g9afe652958c3 #1 PREEMPT
+                        ::ffff:10.0.0.10:  S002965 T00013738259360 F0/L6 Hardware name: ASRock B850 Pro-A/B850 Pro-A, BIOS 3.11 11/12/2024
+                        ::ffff:10.0.0.10:  S002966 T00013738259364 F0/L6 RIP: 0010:free_large_kmalloc+0xa5/0xc0
+                        ::ffff:10.0.0.10:  S002967 T00013738259368 F0/L6 Code: 02 00 00 74 01 fb 83 7b 30 ff 74 07 c7 43 30 ff ff ff ff f0 ff 4b 34 75 08 48 89 df e8 84 dd f9 ff 48 83 c4 08 5b 41 5e 5d c3 <0f> 0b 48 89 df 48 c7 c6 46 92 f5 82 48 83 c4 08 5b 41 5e 5d e9 42
+                        ::ffff:10.0.0.10:  S002968 T00013738259373 F0/L6 RSP: 0018:ffffc90024d67ce8 EFLAGS: 00010206
+                        ::ffff:10.0.0.10:  S002969 T00013738259378 F0/L6 RAX: 00000000ff000000 RBX: ffffea00051d5700 RCX: ffffea00042f2208
+                        ::ffff:10.0.0.10:  S002970 T00013738259381 F0/L6 RDX: 0000000000053a55 RSI: ffff88814755c000 RDI: ffffea00051d5700
+                        ::ffff:10.0.0.10:  S002971 T00013738259384 F0/L6 RBP: 0000000000000000 R08: fffffffffffdfce5 R09: ffffffff83d52928
+                        ::ffff:10.0.0.10:  S002972 T00013738259386 F0/L6 R10: ffffea00047ae080 R11: 0000000000000003 R12: ffff8882cae5cd00
+                        ::ffff:10.0.0.10:  S002973 T00013738259389 F0/L6 R13: ffff88819bb19c08 R14: ffff88819bb194c0 R15: ffff8883a24df900
+                        ::ffff:10.0.0.10:  S002974 T00013738259392 F0/L6 FS:  0000000000000000(0000) GS:ffff88909bf54000(0000) knlGS:0000000000000000
+                        ::ffff:10.0.0.10:  S002975 T00013738259396 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                        ::ffff:10.0.0.10:  S002976 T00013738259399 F0/L6 CR2: 000055842ea1e3f0 CR3: 0000000d82b9d000 CR4: 0000000000750ef0
+                        ::ffff:10.0.0.10:  S002977 T00013738259402 F0/L6 PKRU: 55555554
+                        ::ffff:10.0.0.10:  S002978 T00013738259404 F0/L6 Call Trace:
+                        ::ffff:10.0.0.10:  S002979 T00013738259408 F0/L6  <TASK>
+                        ::ffff:10.0.0.10:  S002980 T00013738259410 F0/L6  futex_hash_free+0x10/0x40
+                        ::ffff:10.0.0.10:  S002981 T00013738259417 F0/L6  __mmput+0xb4/0xd0
+                        ::ffff:10.0.0.10:  S002982 T00013738259423 F0/L6  exec_mmap+0x1e2/0x210
+                        ::ffff:10.0.0.10:  S002983 T00013738259428 F0/L6  begin_new_exec+0x491/0x6c0
+                        ::ffff:10.0.0.10:  S002984 T00013738259431 F0/L6  load_elf_binary+0x25d/0x1050
+                        ::ffff:10.0.0.10:  S002985 T00013738259435 F0/L6  ? load_misc_binary+0x19a/0x2d0
+                        ::ffff:10.0.0.10:  S002986 T00013738259439 F0/L6  bprm_execve+0x1d5/0x370
+                        ::ffff:10.0.0.10:  S002987 T00013738259443 F0/L6  do_execveat_common+0x29e/0x300
+                        ::ffff:10.0.0.10:  S002988 T00013738259446 F0/L6  __x64_sys_execve+0x33/0x40
+                        ::ffff:10.0.0.10:  S002989 T00013738259450 F0/L6  do_syscall_64+0x48/0xfb0
+                        ::ffff:10.0.0.10:  S002990 T00013738259455 F0/L6  entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S002991 T00013738259458 F0/L6 RIP: 0033:0x7fd8ec8e7dd7
+                        ::ffff:10.0.0.10:  S002992 T00013738259463 F0/L6 Code: Unable to access opcode bytes at 0x7fd8ec8e7dad.
+                        ::ffff:10.0.0.10:  S002993 T00013738259466 F0/L6 RSP: 002b:00007fd8adff9e88 EFLAGS: 00000206 ORIG_RAX: 000000000000003b
+                        ::ffff:10.0.0.10:  S002994 T00013738259469 F0/L6 RAX: ffffffffffffffda RBX: 00007fd8adffb6c0 RCX: 00007fd8ec8e7dd7
+                        ::ffff:10.0.0.10:  S002995 T00013738259472 F0/L6 RDX: 000055842ed3ce60 RSI: 00007fd8eaea3870 RDI: 00007fd8eae87940
+                        ::ffff:10.0.0.10:  S002996 T00013738259474 F0/L6 RBP: 00007fd8adff9e90 R08: 00000000ffffffff R09: 0000000000000000
+                        ::ffff:10.0.0.10:  S002997 T00013738259477 F0/L6 R10: 0000000000000008 R11: 0000000000000206 R12: 00007fd8ed12da28
+                        ::ffff:10.0.0.10:  S002998 T00013738259479 F0/L6 R13: 00007fd8eae87940 R14: 00007fd8eaea3870 R15: 0000000000000001
+                        ::ffff:10.0.0.10:  S002999 T00013738259482 F0/L6  </TASK>
+                        ::ffff:10.0.0.10:  S003000 T00013738259484 F0/L4 ---[ end trace 0000000000000000 ]---
+                        ::ffff:10.0.0.10:  S003001 T00013738259487 F0/L4 page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x13d1507b pfn:0x14755c
+                        ::ffff:10.0.0.10:  S003002 T00013738259491 F0/L4 flags: 0x2000000000000000(node=0|zone=1)
+                        ::ffff:10.0.0.10:  S003003 T00013738259496 F0/L4 raw: 2000000000000000 ffffea00042f2208 ffff88901fd66b00 0000000000000000
+                        ::ffff:10.0.0.10:  S003004 T00013738259499 F0/L4 raw: 0000000013d1507b 0000000000000000 00000000ffffffff 0000000000000000
+                        ::ffff:10.0.0.10:  S003005 T00013738259501 F0/L4 page dumped because: Not a kmalloc allocation
+                        ::ffff:10.0.0.10:  S003006 T00013738260711 F0/L4 page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x13d1507b pfn:0x14755c
+                        ::ffff:10.0.0.10:  S003007 T00013738260730 F0/L4 flags: 0x2000000000000000(node=0|zone=1)
+                        ::ffff:10.0.0.10:  S003008 T00013738260736 F0/L4 raw: 2000000000000000 ffffea00042f2208 ffff88901fd66b00 0000000000000000
+                        ::ffff:10.0.0.10:  S003009 T00013738260740 F0/L4 raw: 0000000013d1507b 0000000000000000 00000000ffffffff 0000000000000000
+                        ::ffff:10.0.0.10:  S003010 T00013738260742 F0/L4 page dumped because: Not a kmalloc allocation
