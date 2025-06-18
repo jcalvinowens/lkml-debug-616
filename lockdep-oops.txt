@@ -1,0 +1,139 @@
+                        ::ffff:10.0.0.10:  S003091 T00018602427336 F0/L0 BUG: spinlock bad magic on CPU#2, cargo/4129172
+                        ::ffff:10.0.0.10:  S003092 T00018602427363 F0/L0  lock: 0xffff8881410ecdc8, .magic: dead4ead, .owner: <none>/-1, .owner_cpu: -1
+                        ::ffff:10.0.0.10:  S003093 T00018602427370 F0/L6 CPU: 2 UID: 1000 PID: 4129172 Comm: cargo Not tainted 6.16.0-rc2-nolto-lockdep-00047-g52da431bf03b #1 PREEMPT
+                        ::ffff:10.0.0.10:  S003094 T00018602427372 F0/L6 Hardware name: ASRock B850 Pro-A/B850 Pro-A, BIOS 3.11 11/12/2024
+                        ::ffff:10.0.0.10:  S003095 T00018602427372 F0/L6 Call Trace:
+                        ::ffff:10.0.0.10:  S003096 T00018602427376 F0/L6  <TASK>
+                        ::ffff:10.0.0.10:  S003097 T00018602427376 F0/L6  dump_stack_lvl+0x5a/0x80
+                        ::ffff:10.0.0.10:  S003098 T00018602427380 F0/L6  do_raw_spin_lock+0x6a/0xd0
+                        ::ffff:10.0.0.10:  S003099 T00018602427383 F0/L6  futex_wait_setup+0x8e/0x200
+                        ::ffff:10.0.0.10:  S003100 T00018602427385 F0/L6  __futex_wait+0x63/0x120
+                        ::ffff:10.0.0.10:  S003101 T00018602427386 F0/L6  ? __futex_wake_mark+0x40/0x40
+                        ::ffff:10.0.0.10:  S003102 T00018602427387 F0/L6  futex_wait+0x5b/0xd0
+                        ::ffff:10.0.0.10:  S003103 T00018602427388 F0/L6  ? hrtimer_dummy_timeout+0x10/0x10
+                        ::ffff:10.0.0.10:  S003104 T00018602427390 F0/L6  do_futex+0x86/0x120
+                        ::ffff:10.0.0.10:  S003105 T00018602427391 F0/L6  __se_sys_futex+0x10d/0x180
+                        ::ffff:10.0.0.10:  S003106 T00018602427392 F0/L6  ? entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003107 T00018602427393 F0/L6  do_syscall_64+0x6a/0x1070
+                        ::ffff:10.0.0.10:  S003108 T00018602427396 F0/L6  entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003109 T00018602427397 F0/L6 RIP: 0033:0x7ff7e7ffb779
+                        ::ffff:10.0.0.10:  S003110 T00018602427399 F0/L6 Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 4f 86 0d 00 f7 d8 64 89 01 48
+                        ::ffff:10.0.0.10:  S003111 T00018602427401 F0/L6 RSP: 002b:00007fff29bee078 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+                        ::ffff:10.0.0.10:  S003112 T00018602427403 F0/L6 RAX: ffffffffffffffda RBX: 00007ff7e7ffb760 RCX: 00007ff7e7ffb779
+                        ::ffff:10.0.0.10:  S003113 T00018602427404 F0/L6 RDX: 00000000000000b6 RSI: 0000000000000089 RDI: 000055a5e2b9c1a0
+                        ::ffff:10.0.0.10:  S003114 T00018602427404 F0/L6 RBP: 00007fff29bee0d0 R08: 0000000000000000 R09: 00007fffffffffff
+                        ::ffff:10.0.0.10:  S003115 T00018602427405 F0/L6 R10: 00007fff29bee090 R11: 0000000000000246 R12: 000000001dcd6401
+                        ::ffff:10.0.0.10:  S003116 T00018602427406 F0/L6 R13: 00007ff7e7f16fd0 R14: 000055a5e2b9c1a0 R15: 00000000000000b6
+                        ::ffff:10.0.0.10:  S003117 T00018602427407 F0/L6  </TASK>
+                        ::ffff:10.0.0.10:  S003118 T00018602427407 F0/L4 ------------[ cut here ]------------
+                        ::ffff:10.0.0.10:  S003119 T00018602427463 F0/L6 rcuref - imbalanced put()
+                        ::ffff:10.0.0.10:  S003120 T00018602427472 F0/L4 WARNING: CPU: 2 PID: 4129172 at lib/rcuref.c:266 rcuref_put_slowpath+0x55/0x70
+                        ::ffff:10.0.0.10:  S003121 T00018602427481 F0/L6 CPU: 2 UID: 1000 PID: 4129172 Comm: cargo Not tainted 6.16.0-rc2-nolto-lockdep-00047-g52da431bf03b #1 PREEMPT
+                        ::ffff:10.0.0.10:  S003122 T00018602427484 F0/L6 Hardware name: ASRock B850 Pro-A/B850 Pro-A, BIOS 3.11 11/12/2024
+                        ::ffff:10.0.0.10:  S003123 T00018602427487 F0/L6 RIP: 0010:rcuref_put_slowpath+0x55/0x70
+                        ::ffff:10.0.0.10:  S003124 T00018602427491 F0/L6 Code: 00 00 00 c0 73 2a 85 f6 79 06 c7 07 00 00 00 a0 31 c0 c3 53 48 89 fb 48 c7 c7 da 7f 32 83 c6 05 7f 9c 35 02 01 e8 1b 83 9f ff <0f> 0b 48 89 df 5b 31 c0 c7 07 00 00 00 e0 c3 cc cc cc cc cc cc cc
+                        ::ffff:10.0.0.10:  S003125 T00018602427494 F0/L6 RSP: 0018:ffffc90026e7fca8 EFLAGS: 00010282
+                        ::ffff:10.0.0.10:  S003126 T00018602427498 F0/L6 RAX: 0000000000000019 RBX: ffff8881410ec000 RCX: 0000000000000027
+                        ::ffff:10.0.0.10:  S003127 T00018602427501 F0/L6 RDX: 00000000ffff7fff RSI: 0000000000000002 RDI: ffff88901fc9c008
+                        ::ffff:10.0.0.10:  S003128 T00018602427504 F0/L6 RBP: 0000000000000000 R08: 0000000000007fff R09: ffffffff83676870
+                        ::ffff:10.0.0.10:  S003129 T00018602427507 F0/L6 R10: 0000000000017ffd R11: 00000000ffff7fff R12: 00000000000000b7
+                        ::ffff:10.0.0.10:  S003130 T00018602427510 F0/L6 R13: 000055a5e2b9c1a0 R14: ffff8881410ecdc0 R15: 0000000000000001
+                        ::ffff:10.0.0.10:  S003131 T00018602427512 F0/L6 FS:  00007ff7e875c600(0000) GS:ffff88909b96a000(0000) knlGS:0000000000000000
+                        ::ffff:10.0.0.10:  S003132 T00018602427516 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                        ::ffff:10.0.0.10:  S003133 T00018602427519 F0/L6 CR2: 00007fd4b8001028 CR3: 0000000fd7d31000 CR4: 0000000000750ef0
+                        ::ffff:10.0.0.10:  S003134 T00018602427522 F0/L6 PKRU: 55555554
+                        ::ffff:10.0.0.10:  S003135 T00018602427525 F0/L6 Call Trace:
+                        ::ffff:10.0.0.10:  S003136 T00018602427528 F0/L6  <TASK>
+                        ::ffff:10.0.0.10:  S003137 T00018602427532 F0/L6  futex_private_hash_put+0xa7/0xc0
+                        ::ffff:10.0.0.10:  S003138 T00018602427536 F0/L6  futex_wait_setup+0x1c0/0x200
+                        ::ffff:10.0.0.10:  S003139 T00018602427539 F0/L6  __futex_wait+0x63/0x120
+                        ::ffff:10.0.0.10:  S003140 T00018602427542 F0/L6  ? __futex_wake_mark+0x40/0x40
+                        ::ffff:10.0.0.10:  S003141 T00018602427545 F0/L6  futex_wait+0x5b/0xd0
+                        ::ffff:10.0.0.10:  S003142 T00018602427548 F0/L6  ? hrtimer_dummy_timeout+0x10/0x10
+                        ::ffff:10.0.0.10:  S003143 T00018602427552 F0/L6  do_futex+0x86/0x120
+                        ::ffff:10.0.0.10:  S003144 T00018602427555 F0/L6  __se_sys_futex+0x10d/0x180
+                        ::ffff:10.0.0.10:  S003145 T00018602427558 F0/L6  ? entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003146 T00018602427561 F0/L6  do_syscall_64+0x6a/0x1070
+                        ::ffff:10.0.0.10:  S003147 T00018602427564 F0/L6  entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003148 T00018602427568 F0/L6 RIP: 0033:0x7ff7e7ffb779
+                        ::ffff:10.0.0.10:  S003149 T00018602427570 F0/L6 Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 4f 86 0d 00 f7 d8 64 89 01 48
+                        ::ffff:10.0.0.10:  S003150 T00018602427574 F0/L6 RSP: 002b:00007fff29bee078 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+                        ::ffff:10.0.0.10:  S003151 T00018602427577 F0/L6 RAX: ffffffffffffffda RBX: 00007ff7e7ffb760 RCX: 00007ff7e7ffb779
+                        ::ffff:10.0.0.10:  S003152 T00018602427580 F0/L6 RDX: 00000000000000b6 RSI: 0000000000000089 RDI: 000055a5e2b9c1a0
+                        ::ffff:10.0.0.10:  S003153 T00018602427583 F0/L6 RBP: 00007fff29bee0d0 R08: 0000000000000000 R09: 00007fffffffffff
+                        ::ffff:10.0.0.10:  S003154 T00018602427586 F0/L6 R10: 00007fff29bee090 R11: 0000000000000246 R12: 000000001dcd6401
+                        ::ffff:10.0.0.10:  S003155 T00018602427589 F0/L6 R13: 00007ff7e7f16fd0 R14: 000055a5e2b9c1a0 R15: 00000000000000b6
+                        ::ffff:10.0.0.10:  S003156 T00018602427591 F0/L6  </TASK>
+                        ::ffff:10.0.0.10:  S003157 T00018602427594 F0/L6 irq event stamp: 59385407
+                        ::ffff:10.0.0.10:  S003158 T00018602427597 F0/L6 hardirqs last  enabled at (59385407): [<ffffffff8274264c>] _raw_spin_unlock_irqrestore+0x2c/0x50
+                        ::ffff:10.0.0.10:  S003159 T00018602427601 F0/L6 hardirqs last disabled at (59385406): [<ffffffff8274250d>] _raw_spin_lock_irqsave+0x1d/0x60
+                        ::ffff:10.0.0.10:  S003160 T00018602427604 F0/L6 softirqs last  enabled at (59341786): [<ffffffff8133cc1e>] __irq_exit_rcu+0x4e/0xd0
+                        ::ffff:10.0.0.10:  S003161 T00018602427608 F0/L6 softirqs last disabled at (59341781): [<ffffffff8133cc1e>] __irq_exit_rcu+0x4e/0xd0
+                        ::ffff:10.0.0.10:  S003162 T00018602427613 F0/L4 ---[ end trace 0000000000000000 ]---
+                        ::ffff:10.0.0.10:  S003163 T00018606436086 F0/L1 BUG: unable to handle page fault for address: 0000000000001300
+                        ::ffff:10.0.0.10:  S003164 T00018606436114 F0/L1 #PF: supervisor read access in kernel mode
+                        ::ffff:10.0.0.10:  S003165 T00018606436118 F0/L1 #PF: error_code(0x0000) - not-present page
+                        ::ffff:10.0.0.10:  S003166 T00018606436121 F0/L6 PGD 0 P4D 0
+                        ::ffff:10.0.0.10:  S003167 T00018606436127 F0/L6 Oops: Oops: 0000 [#1] SMP
+                        ::ffff:10.0.0.10:  S003168 T00018606436132 F0/L6 CPU: 4 UID: 1000 PID: 4170542 Comm: zstd Tainted: G        W           6.16.0-rc2-nolto-lockdep-00047-g52da431bf03b #1 PREEMPT
+                        ::ffff:10.0.0.10:  S003169 T00018606436138 F0/L6 Tainted: [W]=WARN
+                        ::ffff:10.0.0.10:  S003170 T00018606436141 F0/L6 Hardware name: ASRock B850 Pro-A/B850 Pro-A, BIOS 3.11 11/12/2024
+                        ::ffff:10.0.0.10:  S003171 T00018606436144 F0/L6 RIP: 0010:__kvmalloc_node_noprof+0x1a2/0x4a0
+                        ::ffff:10.0.0.10:  S003172 T00018606436150 F0/L6 Code: 0f 84 a3 01 00 00 41 83 f8 ff 74 10 48 8b 03 48 c1 e8 3f 41 39 c0 0f 85 8d 01 00 00 41 8b 46 28 49 8b 36 48 8d 4d 20 48 89 ea <4a> 8b 1c 20 4c 89 e0 65 48 0f c7 0e 74 4e eb 9f 41 83 f8 ff 75 b4
+                        ::ffff:10.0.0.10:  S003173 T00018606436156 F0/L6 RSP: 0018:ffffc90036a87c00 EFLAGS: 00010246
+                        ::ffff:10.0.0.10:  S003174 T00018606436160 F0/L6 RAX: 0000000000001000 RBX: ffffea0005043a00 RCX: 0000000000054764
+                        ::ffff:10.0.0.10:  S003175 T00018606436163 F0/L6 RDX: 0000000000054744 RSI: ffffffff84347c80 RDI: 0000000000000080
+                        ::ffff:10.0.0.10:  S003176 T00018606436167 F0/L6 RBP: 0000000000054744 R08: 00000000ffffffff R09: 0000000000000000
+                        ::ffff:10.0.0.10:  S003177 T00018606436170 F0/L6 R10: ffffffff8140972d R11: 0000000000000000 R12: 0000000000000300
+                        ::ffff:10.0.0.10:  S003178 T00018606436173 F0/L6 R13: 00000000004029c0 R14: ffff888100044800 R15: 0000000000001040
+                        ::ffff:10.0.0.10:  S003179 T00018606436176 F0/L6 FS:  00007fca63240740(0000) GS:ffff88909b9ea000(0000) knlGS:0000000000000000
+                        ::ffff:10.0.0.10:  S003180 T00018606436180 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                        ::ffff:10.0.0.10:  S003181 T00018606436183 F0/L6 CR2: 0000000000001300 CR3: 00000004fcac3000 CR4: 0000000000750ef0
+                        ::ffff:10.0.0.10:  S003182 T00018606436186 F0/L6 PKRU: 55555554
+                        ::ffff:10.0.0.10:  S003183 T00018606436189 F0/L6 Call Trace:
+                        ::ffff:10.0.0.10:  S003184 T00018606436194 F0/L6  <TASK>
+                        ::ffff:10.0.0.10:  S003185 T00018606436196 F0/L6  ? futex_hash_allocate+0x17f/0x400
+                        ::ffff:10.0.0.10:  S003186 T00018606436203 F0/L6  futex_hash_allocate+0x17f/0x400
+                        ::ffff:10.0.0.10:  S003187 T00018606436207 F0/L6  ? futex_hash_allocate+0x4d/0x400
+                        ::ffff:10.0.0.10:  S003188 T00018606436210 F0/L6  ? futex_hash_allocate_default+0x2b/0x1e0
+                        ::ffff:10.0.0.10:  S003189 T00018606436214 F0/L6  ? futex_hash_allocate_default+0x2b/0x1e0
+                        ::ffff:10.0.0.10:  S003190 T00018606436218 F0/L6  ? copy_process+0x35e/0x12a0
+                        ::ffff:10.0.0.10:  S003191 T00018606436222 F0/L6  ? futex_hash_allocate_default+0x2b/0x1e0
+                        ::ffff:10.0.0.10:  S003192 T00018606436226 F0/L6  ? copy_process+0x35e/0x12a0
+                        ::ffff:10.0.0.10:  S003193 T00018606436229 F0/L6  copy_process+0xcf3/0x12a0
+                        ::ffff:10.0.0.10:  S003194 T00018606436232 F0/L6  ? entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003195 T00018606436236 F0/L6  kernel_clone+0x7f/0x310
+                        ::ffff:10.0.0.10:  S003196 T00018606436240 F0/L6  ? copy_clone_args_from_user+0x93/0x1e0
+                        ::ffff:10.0.0.10:  S003197 T00018606436244 F0/L6  ? entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003198 T00018606436247 F0/L6  __se_sys_clone3+0xbb/0xc0
+                        ::ffff:10.0.0.10:  S003199 T00018606436250 F0/L6  ? _copy_to_user+0x1f/0x60
+                        ::ffff:10.0.0.10:  S003200 T00018606436256 F0/L6  ? __se_sys_rt_sigprocmask+0xf2/0x120
+                        ::ffff:10.0.0.10:  S003201 T00018606436260 F0/L6  ? trace_hardirqs_off+0x40/0xb0
+                        ::ffff:10.0.0.10:  S003202 T00018606436265 F0/L6  do_syscall_64+0x6a/0x1070
+                        ::ffff:10.0.0.10:  S003203 T00018606436270 F0/L6  entry_SYSCALL_64_after_hwframe+0x4b/0x53
+                        ::ffff:10.0.0.10:  S003204 T00018606436275 F0/L6 RIP: 0033:0x7fca6335f7a9
+                        ::ffff:10.0.0.10:  S003205 T00018606436278 F0/L6 Code: 90 b8 01 00 00 00 b9 01 00 00 00 eb ec 0f 1f 40 00 b8 ea ff ff ff 48 85 ff 74 28 48 85 d2 74 23 49 89 c8 b8 b3 01 00 00 0f 05 <48> 85 c0 7c 14 74 01 c3 31 ed 4c 89 c7 ff d2 48 89 c7 b8 3c 00 00
+                        ::ffff:10.0.0.10:  S003206 T00018606436282 F0/L6 RSP: 002b:00007ffcfe17fe78 EFLAGS: 00000202 ORIG_RAX: 00000000000001b3
+                        ::ffff:10.0.0.10:  S003207 T00018606436286 F0/L6 RAX: ffffffffffffffda RBX: 00007fca632e18e0 RCX: 00007fca6335f7a9
+                        ::ffff:10.0.0.10:  S003208 T00018606436289 F0/L6 RDX: 00007fca632e18e0 RSI: 0000000000000058 RDI: 00007ffcfe17fed0
+                        ::ffff:10.0.0.10:  S003209 T00018606436292 F0/L6 RBP: 00007fca60f666c0 R08: 00007fca60f666c0 R09: 00007ffcfe17ffc7
+                        ::ffff:10.0.0.10:  S003210 T00018606436295 F0/L6 R10: 0000000000000008 R11: 0000000000000202 R12: ffffffffffffff88
+                        ::ffff:10.0.0.10:  S003211 T00018606436298 F0/L6 R13: 0000000000000002 R14: 00007ffcfe17fed0 R15: 00007fca60766000
+                        ::ffff:10.0.0.10:  S003212 T00018606436301 F0/L6  </TASK>
+                        ::ffff:10.0.0.10:  S003213 T00018606436305 F0/L6 CR2: 0000000000001300
+                        ::ffff:10.0.0.10:  S003214 T00018606436309 F0/L4 ---[ end trace 0000000000000000 ]---
+                        ::ffff:10.0.0.10:  S003215 T00018606787090 F0/L6 RIP: 0010:__kvmalloc_node_noprof+0x1a2/0x4a0
+                        ::ffff:10.0.0.10:  S003216 T00018606787115 F0/L6 Code: 0f 84 a3 01 00 00 41 83 f8 ff 74 10 48 8b 03 48 c1 e8 3f 41 39 c0 0f 85 8d 01 00 00 41 8b 46 28 49 8b 36 48 8d 4d 20 48 89 ea <4a> 8b 1c 20 4c 89 e0 65 48 0f c7 0e 74 4e eb 9f 41 83 f8 ff 75 b4
+                        ::ffff:10.0.0.10:  S003217 T00018606787121 F0/L6 RSP: 0018:ffffc90036a87c00 EFLAGS: 00010246
+                        ::ffff:10.0.0.10:  S003218 T00018606787125 F0/L6 RAX: 0000000000001000 RBX: ffffea0005043a00 RCX: 0000000000054764
+                        ::ffff:10.0.0.10:  S003219 T00018606787127 F0/L6 RDX: 0000000000054744 RSI: ffffffff84347c80 RDI: 0000000000000080
+                        ::ffff:10.0.0.10:  S003220 T00018606787130 F0/L6 RBP: 0000000000054744 R08: 00000000ffffffff R09: 0000000000000000
+                        ::ffff:10.0.0.10:  S003221 T00018606787133 F0/L6 R10: ffffffff8140972d R11: 0000000000000000 R12: 0000000000000300
+                        ::ffff:10.0.0.10:  S003222 T00018606787136 F0/L6 R13: 00000000004029c0 R14: ffff888100044800 R15: 0000000000001040
+                        ::ffff:10.0.0.10:  S003223 T00018606787139 F0/L6 FS:  00007fca63240740(0000) GS:ffff88909b9ea000(0000) knlGS:0000000000000000
+                        ::ffff:10.0.0.10:  S003224 T00018606787142 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                        ::ffff:10.0.0.10:  S003225 T00018606787145 F0/L6 CR2: 0000000000001300 CR3: 00000004fcac3000 CR4: 0000000000750ef0
+                        ::ffff:10.0.0.10:  S003226 T00018606787148 F0/L6 PKRU: 55555554
+                        ::ffff:10.0.0.10:  S003227 T00018606787150 F0/L0 Kernel panic - not syncing: Fatal exception
+                        ::ffff:10.0.0.10:  S003228 T00018606787491 F0/L0 Kernel Offset: disabled
+                        ::ffff:10.0.0.10:  S003229 T00018607128977 F0/L0 ---[ end Kernel panic - not syncing: Fatal exception ]---
