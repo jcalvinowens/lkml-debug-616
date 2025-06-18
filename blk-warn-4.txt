@@ -1,0 +1,37 @@
+                        ::ffff:10.0.0.10:  S003117 T00023490145528 F0/L6 ------------[ cut here ]------------
+                        ::ffff:10.0.0.10:  S003118 T00023490145560 F0/L4 WARNING: CPU: 23 PID: 965 at block/genhd.c:144 bdev_count_inflight+0x6a/0x80
+                        ::ffff:10.0.0.10:  S003119 T00023490145574 F0/L6 CPU: 23 UID: 0 PID: 965 Comm: dmcrypt_write/2 Not tainted 6.16.0-rc2-nolto-debugpagealloc-00047-g52da431bf03b #1 PREEMPT 
+                        ::ffff:10.0.0.10:  S003120 T00023490145581 F0/L6 Hardware name: ASRock B850 Pro-A/B850 Pro-A, BIOS 3.11 11/12/2024
+                        ::ffff:10.0.0.10:  S003121 T00023490145588 F0/L6 RIP: 0010:bdev_count_inflight+0x6a/0x80
+                        ::ffff:10.0.0.10:  S003122 T00023490145595 F0/L6 Code: 83 83 e6 3f 4f 8b 94 01 88 00 00 00 4f 8b 84 01 90 00 00 00 44 01 d1 44 01 c0 83 fe 18 72 b4 85 c9 78 07 85 c0 78 0b 01 c8 c3 <0f> 0b 31 c9 85 c0 79 f5 0f 0b 31 c0 01 c8 c3 0f 1f 80 00 00 00 00
+                        ::ffff:10.0.0.10:  S003123 T00023490145602 F0/L6 RSP: 0018:ffffc9000d0a3bd8 EFLAGS: 00010286
+                        ::ffff:10.0.0.10:  S003124 T00023490145609 F0/L6 RAX: 0000000000000280 RBX: 0000000000000001 RCX: 00000000ffffffff
+                        ::ffff:10.0.0.10:  S003125 T00023490145615 F0/L6 RDX: 0000000000ffffff RSI: 0000000000000018 RDI: ffff8890689e0040
+                        ::ffff:10.0.0.10:  S003126 T00023490145620 F0/L6 RBP: ffff8896a940e058 R08: 00000000000019e6 R09: ffff88a089d93000
+                        ::ffff:10.0.0.10:  S003127 T00023490145625 F0/L6 R10: fffffffffffffffc R11: ffffffff81222a70 R12: 000000010161da0f
+                        ::ffff:10.0.0.10:  S003128 T00023490145630 F0/L6 R13: ffff8890689e0040 R14: ffff8890689e0040 R15: 000000010161da0e
+                        ::ffff:10.0.0.10:  S003129 T00023490145635 F0/L6 FS:  0000000000000000(0000) GS:ffff88a089d93000(0000) knlGS:0000000000000000
+                        ::ffff:10.0.0.10:  S003130 T00023490145641 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                        ::ffff:10.0.0.10:  S003131 T00023490145647 F0/L6 CR2: 00007fcc655c2000 CR3: 00000015fe219000 CR4: 0000000000750ef0
+                        ::ffff:10.0.0.10:  S003132 T00023490145652 F0/L6 PKRU: 55555554
+                        ::ffff:10.0.0.10:  S003133 T00023490145657 F0/L6 Call Trace:
+                        ::ffff:10.0.0.10:  S003134 T00023490145662 F0/L6  <TASK>
+                        ::ffff:10.0.0.10:  S003135 T00023490145666 F0/L6  bdev_start_io_acct+0x4f/0xb0
+                        ::ffff:10.0.0.10:  S003136 T00023490145673 F0/L6  md_account_bio+0x6a/0x100
+                        ::ffff:10.0.0.10:  S003137 T00023490145679 F0/L6  raid1_make_request+0x677/0xbe0
+                        ::ffff:10.0.0.10:  S003138 T00023490145685 F0/L6  md_handle_request+0x126/0x1f0
+                        ::ffff:10.0.0.10:  S003139 T00023490145691 F0/L6  __submit_bio+0x11b/0x1d0
+                        ::ffff:10.0.0.10:  S003140 T00023490145696 F0/L6  ? sysvec_apic_timer_interrupt+0xa/0x80
+                        ::ffff:10.0.0.10:  S003141 T00023490145702 F0/L6  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+                        ::ffff:10.0.0.10:  S003142 T00023490145707 F0/L6  submit_bio_noacct_nocheck+0x1b5/0x2c0
+                        ::ffff:10.0.0.10:  S003143 T00023490145711 F0/L6  ? dm_io_acct+0x55/0xe0
+                        ::ffff:10.0.0.10:  S003144 T00023490145716 F0/L6  dmcrypt_write+0xb2/0xe0
+                        ::ffff:10.0.0.10:  S003145 T00023490145722 F0/L6  ? crypt_page_free+0x30/0x30
+                        ::ffff:10.0.0.10:  S003146 T00023490145726 F0/L6  kthread+0x21a/0x260
+                        ::ffff:10.0.0.10:  S003147 T00023490145732 F0/L6  ? kthread_blkcg+0x30/0x30
+                        ::ffff:10.0.0.10:  S003148 T00023490145736 F0/L6  ret_from_fork+0x90/0xd0
+                        ::ffff:10.0.0.10:  S003149 T00023490145742 F0/L6  ? kthread_blkcg+0x30/0x30
+                        ::ffff:10.0.0.10:  S003150 T00023490145746 F0/L6  ret_from_fork_asm+0x11/0x20
+                        ::ffff:10.0.0.10:  S003151 T00023490145752 F0/L6  </TASK>
+                        ::ffff:10.0.0.10:  S003152 T00023490145757 F0/L4 ---[ end trace 0000000000000000 ]---
+
