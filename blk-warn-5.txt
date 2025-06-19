@@ -1,0 +1,36 @@
+                         ::ffff:10.0.1.7:  S001097 T00011852061935 F0/L6 ------------[ cut here ]------------
+                         ::ffff:10.0.1.7:  S001098 T00011852061962 F0/L4 WARNING: CPU: 29 PID: 596 at block/genhd.c:144 bdev_count_inflight_rw+0x8a/0xc0
+                         ::ffff:10.0.1.7:  S001099 T00011852061974 F0/L6 CPU: 29 UID: 0 PID: 596 Comm: dmcrypt_write/2 Not tainted 6.16.0-rc2-gcc-debugvm-00071-g74b4cc9b8780 #1 PREEMPT 
+                         ::ffff:10.0.1.7:  S001100 T00011852061982 F0/L6 Hardware name: Gigabyte Technology Co., Ltd. A620I AX/A620I AX, BIOS F3 07/10/2023
+                         ::ffff:10.0.1.7:  S001101 T00011852061988 F0/L6 RIP: 0010:bdev_count_inflight_rw+0x8a/0xc0
+                         ::ffff:10.0.1.7:  S001102 T00011852061993 F0/L6 Code: 00 01 d7 89 3e 49 8b 50 20 4a 03 14 d5 80 3b 46 82 48 8b 92 90 00 00 00 01 d1 48 63 d0 89 4e 04 48 83 fa 1f 76 92 85 ff 79 a7 <0f> 0b c7 06 00 00 00 00 85 c9 79 9f 0f 0b c7 46 04 00 00 00 00 48
+                         ::ffff:10.0.1.7:  S001103 T00011852062001 F0/L6 RSP: 0018:ffffc90010cb7cd0 EFLAGS: 00010286
+                         ::ffff:10.0.1.7:  S001104 T00011852062007 F0/L6 RAX: 0000000000000020 RBX: ffff88908fd12540 RCX: 0000000000000005
+                         ::ffff:10.0.1.7:  S001105 T00011852062012 F0/L6 RDX: 0000000000000020 RSI: ffffc90010cb7ce0 RDI: 00000000fffffff9
+                         ::ffff:10.0.1.7:  S001106 T00011852062016 F0/L6 RBP: ffff888c86711500 R08: ffff8881049e9200 R09: ffffffffffffffff
+                         ::ffff:10.0.1.7:  S001107 T00011852062020 F0/L6 R10: 000000000000001f R11: 0000000000000000 R12: ffff8881075a0000
+                         ::ffff:10.0.1.7:  S001108 T00011852062024 F0/L6 R13: ffffc90010cb7e70 R14: 0000000000000000 R15: ffff888106efcc00
+                         ::ffff:10.0.1.7:  S001109 T00011852062028 F0/L6 FS:  0000000000000000(0000) GS:ffff8898a5724000(0000) knlGS:0000000000000000
+                         ::ffff:10.0.1.7:  S001110 T00011852062033 F0/L6 CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+                         ::ffff:10.0.1.7:  S001111 T00011852062037 F0/L6 CR2: 00007fd25ea3e690 CR3: 0000000bce15b000 CR4: 0000000000350ef0
+                         ::ffff:10.0.1.7:  S001112 T00011852062042 F0/L6 Call Trace:
+                         ::ffff:10.0.1.7:  S001113 T00011852062047 F0/L6  <TASK>
+                         ::ffff:10.0.1.7:  S001114 T00011852062051 F0/L6  bdev_count_inflight+0x16/0x30
+                         ::ffff:10.0.1.7:  S001115 T00011852062055 F0/L6  update_io_ticks+0x84/0xa0
+                         ::ffff:10.0.1.7:  S001116 T00011852062062 F0/L6  blk_mq_submit_bio+0x32a/0x6f0
+                         ::ffff:10.0.1.7:  S001117 T00011852062068 F0/L6  __submit_bio+0x8f/0x200
+                         ::ffff:10.0.1.7:  S001118 T00011852062072 F0/L6  ? sysvec_apic_timer_interrupt+0xa/0x80
+                         ::ffff:10.0.1.7:  S001119 T00011852062079 F0/L6  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+                         ::ffff:10.0.1.7:  S001120 T00011852062084 F0/L6  submit_bio_noacct_nocheck+0x28c/0x360
+                         ::ffff:10.0.1.7:  S001121 T00011852062089 F0/L6  ? bdev_start_io_acct+0x1d/0x60
+                         ::ffff:10.0.1.7:  S001122 T00011852062093 F0/L6  dmcrypt_write+0xbe/0xe0
+                         ::ffff:10.0.1.7:  S001123 T00011852062099 F0/L6  ? crypt_iv_lmk_dtr+0x50/0x50
+                         ::ffff:10.0.1.7:  S001124 T00011852062103 F0/L6  kthread+0xd5/0x1e0
+                         ::ffff:10.0.1.7:  S001125 T00011852062109 F0/L6  ? kthread_queue_delayed_work+0x70/0x70
+                         ::ffff:10.0.1.7:  S001126 T00011852062113 F0/L6  ret_from_fork+0xa0/0xe0
+                         ::ffff:10.0.1.7:  S001127 T00011852062120 F0/L6  ? kthread_queue_delayed_work+0x70/0x70
+                         ::ffff:10.0.1.7:  S001128 T00011852062125 F0/L6  ? kthread_queue_delayed_work+0x70/0x70
+                         ::ffff:10.0.1.7:  S001129 T00011852062130 F0/L6  ret_from_fork_asm+0x11/0x20
+                         ::ffff:10.0.1.7:  S001130 T00011852062136 F0/L6  </TASK>
+                         ::ffff:10.0.1.7:  S001131 T00011852062140 F0/L4 ---[ end trace 0000000000000000 ]---
+
